@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}
+{{ group.title }}
+{% endblock %}
+
+{% block content %}
+  <h1>Записи группы {{ group.title }}</h1>
+  <p> {{ group.description }} </p>
+  {% for post in posts %}
+    <article>
+      {% include 'includes/posts.html' %}
+    </article>
+    {% if not forloop.last %}<hr>{% endif %}
+  {% endfor %}
+{% endblock %}
