@@ -1,12 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Post, Group
 
-# Create your views here.
+amount_on_page = 10
 
-
-# Главная страница
 def index(request):
-    posts = Post.objects.order_by('-pub_date')[:10]
+    posts = Post.objects.order_by('-pub_date')[:amount_on_page]
     template = 'posts/index.html'
     title = 'Главная страница'
     context = {
@@ -17,10 +15,9 @@ def index(request):
     return render(request, template, context)
 
 
-# Лента постов групп
 def group_posts(request, slug):
     group = get_object_or_404(Group, slug=slug)
-    posts = Post.objects.filter(group=group).order_by('-pub_date')[:10]
+    posts = group.groups.order_by('-pub_date')[:amount_on_page]
     title = 'Записи группы'
     context = {
         'group': group,
