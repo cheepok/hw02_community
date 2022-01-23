@@ -1,9 +1,8 @@
-from multiprocessing import context
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
 from .models import Post, Group
 
 # Create your views here.
+
 
 # Главная страница
 def index(request):
@@ -17,6 +16,7 @@ def index(request):
     }
     return render(request, template, context)
 
+
 # Лента постов групп
 def group_posts(request, slug):
     group = get_object_or_404(Group, slug=slug)
@@ -25,6 +25,6 @@ def group_posts(request, slug):
     context = {
         'group': group,
         'posts': posts,
-        'title' : title
+        'title': title
     }
     return render(request, 'posts/group_list.html', context)
