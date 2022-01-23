@@ -1,4 +1,3 @@
-from turtle import title
 from django.db import models
 from django.contrib.auth import get_user_model
 
@@ -17,10 +16,11 @@ class Post(models.Model):
     )
     group = models.ForeignKey(
         'Group',
-        blank=True, 
+        blank=True,
         null=True,
         on_delete=models.CASCADE
-    ) 
+    )
+
 
 class Group(models.Model):
     title = models.CharField(max_length=200)
