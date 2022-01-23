@@ -20,8 +20,9 @@ class Post(models.Model):
         on_delete=models.CASCADE,
         related_name='groups'
     )
+    
     def __str__(self):
-        return self.text 
+        return self.text
 
 
 class Group(models.Model):

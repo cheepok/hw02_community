@@ -3,6 +3,7 @@ from .models import Post, Group
 
 amount_on_page = 10
 
+
 def index(request):
     posts = Post.objects.order_by('-pub_date')[:amount_on_page]
     template = 'posts/index.html'
