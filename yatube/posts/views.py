@@ -1,11 +1,11 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Post, Group
 
-amount_on_page = 10
+AMOUNT_ON_PAGE = 10
 
 
 def index(request):
-    posts = Post.objects.order_by('-pub_date')[:amount_on_page]
+    posts = Post.objects.order_by('-pub_date')[:AMOUNT_ON_PAGE]
     template = 'posts/index.html'
     title = 'Главная страница'
     context = {
@@ -18,7 +18,7 @@ def index(request):
 
 def group_posts(request, slug):
     group = get_object_or_404(Group, slug=slug)
-    posts = group.groups.order_by('-pub_date')[:amount_on_page]
+    posts = group.groups.order_by('-pub_date')[:AMOUNT_ON_PAGE]
     title = 'Записи группы'
     context = {
         'group': group,
